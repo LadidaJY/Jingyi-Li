@@ -16,7 +16,7 @@ body {
 }
 
 header {
-    background: #4a6fa5;
+    background: #1F2041;
     color: white;
     padding: 2rem 0;
     text-align: center;
@@ -29,14 +29,14 @@ h1 {
 }
 
 h2 {
-    color: #4a6fa5;
+    color: #465D66;
     margin: 1.5rem 0 1rem;
     border-bottom: 2px solid #eaeaea;
     padding-bottom: 0.5rem;
 }
 
 section {
-    background: white;
+    background: #E9D2C0;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     border-radius: 8px;
@@ -69,4 +69,181 @@ footer {
     padding: 1rem;
     color: #666;
     font-size: 0.9rem;
+}
+
+/* 导航栏样式 */
+.navbar {
+    background-color: #89A58A;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+/* 横排按钮组样式 */
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    background-color: transparent;
+    color: var(--dark-color);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: var(--transition);
+    min-width: 100px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.nav-btn i {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    transition: var(--transition);
+}
+
+.nav-btn span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+/* 按钮悬停效果 */
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--primary-color);
+    transition: height 0.3s ease;
+    z-index: -1;
+    border-radius: 0 0 8px 8px;
+}
+
+.nav-btn:hover::before {
+    height: 100%;
+}
+
+.nav-btn:hover, 
+.nav-btn.active {
+    color: white;
+}
+
+.nav-btn:hover i, 
+.nav-btn.active i {
+    transform: translateY(-3px);
+}
+
+.nav-btn:hover span, 
+.nav-btn.active span {
+    transform: translateY(3px);
+}
+
+/* 活动状态指示器 */
+.nav-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+/* 移动端切换按钮 */
+.mobile-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark-color);
+}
+
+/* 内容区域 */
+.content {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav-buttons {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        gap: 0;
+        box-shadow: var(--shadow);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+    
+    .nav-buttons.active {
+        max-height: 400px;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        border-radius: 0;
+        padding: 15px 20px;
+        text-align: left;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    
+    .nav-btn i {
+        margin-bottom: 0;
+        margin-right: 15px;
+        font-size: 1.2rem;
+    }
+    
+    .nav-btn.active::after {
+        display: none;
+    }
+    
+    .mobile-toggle {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo a {
+        font-size: 1.4rem;
+    }
+    
+    .logo a::before {
+        font-size: 1.2rem;
+    }
 }

@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "title": "A size‐constrained feeding‐niche model distinguishes predation patterns between aquatic and terrestrial food webs",
+        "authors": "Jingyi Li<sup>#</sup>, Mingyu Luo<sup>#</sup>, Shaopeng Wang, Benoit Gauzens, Myriam R Hirt, Benjamin Rosenbaum, Ulrich Brose",
+        "journal": "Ecology Letters",
+        "year": 2023,
+        "doi": "https://doi.org/10.1111/ele.14134"
+    },
+    {
+        "id": 2,
+        "title": "High dimensionality of stoichiometric niches in soil fauna",
+        "authors": "Bing Zhang, Haozhen Chen, Mingqin Deng, Jingyi Li, Angélica L González, Shaopeng Wang",
+        "journal": "Ecology",
+        "year": 2022,
+        "doi": "https://doi.org/10.1002/ecy.3741"
+    },
+    {
+        "id": 3,
+        "title": "Towards understanding interactions in a complex world: Design and analysis of multi‐species functional response experiments",
+        "authors": "Benjamin Rosenbaum, Jingyi Li, Myriam R Hirt, Remo Ryser, Ulrich Brose",
+        "journal": "Methods in Ecology and Evolution",
+        "year": 2024,
+        "doi": "https://doi.org/10.1111/2041-210X.14372"
+    },
+    {
+        "id": 4,
+        "title": "Soil community history strengthens belowground multitrophic functioning across plant diversity levels in a grassland experiment",
+        "authors": "Angelos Amyntas, Nico Eisenhauer, Stefan Scheu, Bernhard Klarner, Krassimira Ilieva-Makulec, Anna-Maria Madaj, Benoit Gauzens, Jingyi Li, Anton M Potapov, Benjamin Rosenbaum, Leonardo Bassi, Pamela Medina van Berkum, Ulrich Brose",
+        "journal": "Nature Communications",
+        "year": 2024,
+        "doi": "https://doi.org/10.1038/s41467-024-54401-z"
+    },
+    {
+        "id": 5,
+        "title": "Decoding information flow and sensory pollution: a systematic framework for understanding species interactions",
+        "authors": "Jingyi Li, Ulrich Brose, Benjamin Rosenbaum, Remo Ryser, Emilio Berti",
+        "journal": "Ecology Letters",
+        "year": 2024,
+        "doi": "https://doi.org/10.1111/ele.14522"
+    }
+]

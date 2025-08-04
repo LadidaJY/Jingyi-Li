@@ -1,406 +1,24 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jingyi Li | Research</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 图标 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* 基础重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #1F2041;
-            --secondary-color: #4B644A;
-            --accent-color: #89A58A;
-            --light-color: #f8f9fa;
-            --text-color: #333;
-            --border-radius: 8px;
-            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-color);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            background: var(--primary-color);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            margin-bottom: 2rem;
-            border-radius: var(--border-radius);
-            position: relative;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            opacity: 0.8;
-        }
-
-        h2 {
-            color: var(--primary-color);
-            margin: 1.5rem 0 1rem;
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 0.5rem;
-        }
-
-        /* 语言切换 */
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .lang-btn.active {
-            background: white;
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-
-        /* 导航栏样式 */
-        .navbar {
-            background-color: var(--accent-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-radius: var(--border-radius);
-            margin-bottom: 1.5rem;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        /* 横排按钮组样式 */
-        .nav-buttons {
-            display: flex;
-            gap: 5px;
-        }
-
-        .nav-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 15px;
-            background-color: transparent;
-            color: white;
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            min-width: 80px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .nav-btn i {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            transition: var(--transition);
-        }
-
-        .nav-btn span {
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        /* 按钮悬停效果 */
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background-color: var(--primary-color);
-            transition: height 0.3s ease;
-            z-index: -1;
-            border-radius: 0 0 var(--border-radius) var(--border-radius);
-        }
-
-        .nav-btn:hover::before {
-            height: 100%;
-        }
-
-        .nav-btn:hover,
-        .nav-btn.active {
-            color: white;
-        }
-
-        .nav-btn:hover i,
-        .nav-btn.active i {
-            transform: translateY(-3px);
-        }
-
-        .nav-btn:hover span,
-        .nav-btn.active span {
-            transform: translateY(3px);
-        }
-
-        /* 活动状态指示器 */
-        .nav-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 3px;
-            background-color: white;
-            border-radius: 2px;
-        }
-
-        /* 移动端切换按钮 */
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
-            padding: 10px;
-        }
-
-        /* 主要内容布局 */
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            padding: 0 20px;
-        }
-
-        /* 研究项目部分 */
-        .research-section {
-            background: #EFDDD0;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-        }
-        
-        .research-section h2 {
-            text-align: center;
-            margin-top: 0;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--accent-color);
-        }
-
-        /* 研究项目容器 */
-        .research-project {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            margin: 3rem 0;
-        }
-        
-        .research-project.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .research-content {
-            flex: 1;
-        }
-
-        .research-image {
-            flex: 1;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s ease;
-        }
-        
-        .research-image:hover {
-            transform: translateY(-5px);
-        }
-
-        .research-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        
-        .research-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .research-content h3 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .research-content p {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .research-details {
-            background: rgba(137, 165, 138, 0.1);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            margin-top: 1.5rem;
-        }
-
-        .research-details h4 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .research-details ul {
-            list-style-type: none;
-            padding-left: 20px;
-        }
-
-        .research-details li {
-            position: relative;
-            margin-bottom: 0.8rem;
-            padding-left: 30px;
-        }
-
-        .research-details li:before {
-            content: "•";
-            color: var(--accent-color);
-            font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: -5px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 1.5rem;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid #eee;
-            background: rgba(237, 218, 203, 0.2);
-            border-radius: var(--border-radius);
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .nav-buttons {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: var(--accent-color);
-                flex-direction: column;
-                gap: 0;
-                box-shadow: var(--box-shadow);
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.4s ease;
-                border-radius: 0 0 var(--border-radius) var(--border-radius);
-            }
-
-            .nav-buttons.active {
-                max-height: 400px;
-            }
-
-            .nav-btn {
-                width: 100%;
-                border-radius: 0;
-                padding: 15px 20px;
-                text-align: left;
-                flex-direction: row;
-                justify-content: flex-start;
-            }
-
-            .nav-btn i {
-                margin-bottom: 0;
-                margin-right: 15px;
-                font-size: 1.2rem;
-            }
-
-            .nav-btn.active::after {
-                display: none;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
-            
-            .research-project,
-            .research-project.reverse {
-                flex-direction: column;
-            }
-            
-            .research-content,
-            .research-image {
-                width: 100%;
-            }
-            
-            .research-image {
-                margin-top: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .subtitle {
-                font-size: 0.9rem;
-            }
-
-            .nav-btn span {
-                font-size: 0.8rem;
-            }
-            
-            .research-section {
-                padding: 1.5rem;
-            }
-            
-            .research-content h3 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="css/style-research.css">
 </head>
 
 <body>
-    <header>
-        <div class="language-switcher">
+    <!-- 头部区域 -->
+    <header class="text-center py-4 mb-4">
+        <div class="language-switcher position-absolute top-0 end-0 mt-3 me-3">
             <button class="lang-btn active" data-lang="en">EN</button>
             <button class="lang-btn" data-lang="zh">中文</button>
         </div>
@@ -408,108 +26,90 @@
         <p class="subtitle i18n" data-i18n="title">Research Projects</p>
     </header>
 
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="mobile-toggle">
+    <!-- 导航栏 - 使用Bootstrap导航组件 -->
+    <nav class="navbar navbar-expand-md sticky-top mb-4">
+        <div class="container-fluid">
+            <!-- 移动端切换按钮 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fas fa-bars"></i>
-            </div>
-
-            <div class="nav-buttons">
-                <a href="index.html" class="nav-btn">
-                    <i class="fas fa-home"></i>
-                    <span class="i18n" data-i18n="home">Home</span>
-                </a>
-                <a href="CV.html" class="nav-btn">
-                    <i class="fas fa-file-alt"></i>
-                    <span class="i18n" data-i18n="cv">CV</span>
-                </a>
-                <a href="research.html" class="nav-btn active">
-                    <i class="fas fa-computer"></i>
-                    <span class="i18n" data-i18n="research">Research</span>
-                </a>
-                <a href="publications.html" class="nav-btn">
-                    <i class="fas fa-book"></i>
-                    <span class="i18n" data-i18n="publications">Publications</span>
-                </a>
+            </button>
+            
+            <!-- 导航链接 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav w-100 justify-content-start">
+                    <a href="index.html" class="nav-btn nav-link">
+                        <i class="fas fa-home me-2"></i>
+                        <span class="i18n" data-i18n="home">Home</span>
+                    </a>
+                    <a href="CV.html" class="nav-btn nav-link">
+                        <i class="fas fa-file-alt me-2"></i>
+                        <span class="i18n" data-i18n="cv">CV</span>
+                    </a>
+                    <a href="research.html" class="nav-btn nav-link active">
+                        <i class="fas fa-computer me-2"></i>
+                        <span class="i18n" data-i18n="research">Research</span>
+                    </a>
+                    <a href="publications.html" class="nav-btn nav-link">
+                        <i class="fas fa-book me-2"></i>
+                        <span class="i18n" data-i18n="publications">Publications</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="main-content">
+    <div class="container">
         <!-- 研究项目部分 -->
-        <section class="research-section">
-            <h2 class="i18n" data-i18n="research">My Research</h2>
+        <section class="research-section p-4 mb-5">
+            <h2 class="text-center mb-4 pb-2 i18n" data-i18n="research">Research</h2>
             
-            <!-- 项目一：文字在左，图片在右 -->
-            <div class="research-project">
-                <div class="research-content">
-                    <h3 class="i18n" data-i18n="project1_title">Sensory Information Constraind Trophic interactions</h3>
-                    <p class="i18n" data-i18n="project1_desc">
-                        Understanding how the information flow between species affects their interactions 
-                        is the main topic of my PhD thesis. I investigate how sensory information constrain species
-                        trophic interactions and influences predator-prey dynamics and species coexistence 
-                        in changing environments.
-                    </p>
-                    <p class="i18n" data-i18n="project1_desc2">
-                        more details...
-                    </p>
-                    
-                    <div class="research-details">
-                        <h4 class="i18n" data-i18n="key_aspects">Key Aspects</h4>
-                        <ul>
-                            <li class="i18n" data-i18n="aspect1">Quantifying information flow in predator-prey systems</li>
-                            <li class="i18n" data-i18n="aspect2">Modeling sensory perception in complex environments</li>
-                            <li class="i18n" data-i18n="aspect3">Assessing impacts of anthropogenic noise on ecological networks</li>
-                            <li class="i18n" data-i18n="aspect4">Developing conservation strategies based on information theory</li>
-                        </ul>
+            <!-- 项目一 -->
+            <div class="row research-project align-items-center mb-5">
+                <div class="col-lg-6">
+                    <div class="research-content">
+                        <h3 class="i18n" data-i18n="project1_title"></h3>
+                        <p class="i18n" data-i18n="project1_desc"></p>
+                        <p class="i18n" data-i18n="project1_desc2"></p>
                     </div>
                 </div>
                 
-                <div class="research-image">
-                    <img src="images/project-ifr.jpg" alt="Sensory Information Flow">
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="research-image overflow-hidden rounded shadow">
+                        <img src="images/project-ifr.jpg"
+                             alt="Sensory Information Flow" class="img-fluid w-100">
+                    </div>
                 </div>
             </div>
             
-            <!-- 项目二：文字在右，图片在左 -->
-            <div class="research-project reverse">
-                <div class="research-content">
-                    <h3 class="i18n" data-i18n="project2_title">Trophic Interaction Inference</h3>
-                    <p class="i18n" data-i18n="project2_desc">
-                        My research on trophic interaction inference focuses on developing novel methods 
-                        to predict and analyze food web structures using limited observational data. 
-                        This approach combines machine learning with ecological theory to reconstruct 
-                        complex feeding networks.
-                    </p>
-                    <p class="i18n" data-i18n="project2_desc2">
-                        By integrating trait-based modeling and network analysis, I aim to uncover 
-                        hidden patterns in trophic interactions and predict how these networks respond 
-                        to environmental changes such as climate change and habitat fragmentation.
-                    </p>
-                    
-                    <div class="research-details">
-                        <h4 class="i18n" data-i18n="methodologies">Methodologies</h4>
-                        <ul>
-                            <li class="i18n" data-i18n="method1">Machine learning for interaction prediction</li>
-                            <li class="i18n" data-i18n="method2">Stable isotope analysis of trophic positions</li>
-                            <li class="i18n" data-i18n="method3">Network analysis of food web stability</li>
-                            <li class="i18n" data-i18n="method4">Trait-based modeling of predator-prey interactions</li>
-                        </ul>
+            <!-- 项目二 -->
+            <div class="row research-project align-items-center mb-5">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="research-content">
+                        <h3 class="i18n" data-i18n="project2_title"></h3>
+                        <p class="i18n" data-i18n="project2_desc"></p>
+                        <p class="i18n" data-i18n="project2_desc2"></p>
                     </div>
                 </div>
                 
-                <div class="research-image">
-                    <img src="images/project-scfn.jpg" alt="Trophic Interaction Inference">
+                <div class="col-lg-6 mt-4 mt-lg-0 order-lg-1">
+                    <div class="research-image overflow-hidden rounded shadow">
+                        <img src="images/project-scfn.jpg" 
+                             alt="Trophic Interaction Inference" class="img-fluid w-100">
+                    </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <footer>
-        <p class="i18n" data-i18n="footer">Jingyi Li | Ecology | <a
-                href="mailto:lijingyi1015@gmail.com">lijingyi1015@gmail.com</a></p>
+    <!-- 页脚 -->
+    <footer class="text-center py-4 mt-5">
+        <p class="i18n m-0" data-i18n="footer">Jingyi Li | Ecology | <a href="mailto:lijingyi1015@gmail.com">lijingyi1015@gmail.com</a></p>
     </footer>
 
+    <!-- Bootstrap JS 和 Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 自定义JS -->
     <script>
         // 多语言支持
         const translations = {
@@ -520,22 +120,12 @@
                 cv: "CV",
                 research: "Research",
                 publications: "Publications",
-                project1_title: "Sensory Information Flow",
+                project1_title: "Sensory Information Flow & Trophic Interaction Strength",
                 project1_desc: "Understanding how the information flow between species affects their interactions is the main topic of my PhD thesis. I investigate how sensory information shapes ecological networks and influences species coexistence in changing environments.",
                 project1_desc2: "My research integrates field observations with computational models to quantify information transfer pathways and their impact on ecosystem stability. This work provides insights into how sensory pollution affects ecological communities and offers strategies for biodiversity conservation.",
-                key_aspects: "Key Aspects",
-                aspect1: "Quantifying information flow in predator-prey systems",
-                aspect2: "Modeling sensory perception in complex environments",
-                aspect3: "Assessing impacts of anthropogenic noise on ecological networks",
-                aspect4: "Developing conservation strategies based on information theory",
-                project2_title: "Trophic Interaction Inference",
+                project2_title: "Predator-prey Size Ratio & Trophic Interactions Inferences",
                 project2_desc: "My research on trophic interaction inference focuses on developing novel methods to predict and analyze food web structures using limited observational data. This approach combines machine learning with ecological theory to reconstruct complex feeding networks.",
-                project2_desc2: "By integrating trait-based modeling and network analysis, I aim to uncover hidden patterns in trophic interactions and predict how these networks respond to environmental changes such as climate change and habitat fragmentation.",
-                methodologies: "Methodologies",
-                method1: "Machine learning for interaction prediction",
-                method2: "Stable isotope analysis of trophic positions",
-                method3: "Network analysis of food web stability",
-                method4: "Trait-based modeling of predator-prey interactions",
+                project2_desc2: "By integrating trait-based modeling and network analysis, I aim to uncover hidden patterns in trophic interactions and predict how these networks respond to environmental changes such as climate change and habitat fragmentation."
             },
             zh: {
                 name: "李菁祎",
@@ -544,22 +134,12 @@
                 cv: "个人简历",
                 research: "研究",
                 publications: "出版物",
-                project1_title: "感官信息流",
+                project1_title: "感官信息流和营养相互作用强度",
                 project1_desc: "理解物种间信息流如何影响它们的相互作用是我博士论文的主要课题。我研究感官信息如何塑造生态网络，并在变化的环境中影响物种共存。",
                 project1_desc2: "我的研究结合实地观察和计算模型，量化信息传递路径及其对生态系统稳定性的影响。这项工作揭示了感官污染如何影响生态群落，并为生物多样性保护提供了策略。",
-                key_aspects: "关键方面",
-                aspect1: "量化捕食者-猎物系统中的信息流",
-                aspect2: "在复杂环境中模拟感官感知",
-                aspect3: "评估人为噪音对生态网络的影响",
-                aspect4: "基于信息理论制定保护策略",
-                project2_title: "营养级相互作用推断",
+                project2_title: "捕食者-猎物体型大小比与营养相互作用推断",
                 project2_desc: "我的营养级相互作用推断研究专注于开发新方法，利用有限的观测数据预测和分析食物网结构。这种方法将机器学习与生态理论相结合，重建复杂的摄食网络。",
-                project2_desc2: "通过整合基于特征的建模和网络分析，我旨在揭示营养级相互作用中的隐藏模式，并预测这些网络如何响应气候变化和栖息地破碎化等环境变化。",
-                methodologies: "研究方法",
-                method1: "用于相互作用预测的机器学习",
-                method2: "营养级位置的稳定同位素分析",
-                method3: "食物网稳定性的网络分析",
-                method4: "捕食者-猎物相互作用的特征建模",
+                project2_desc2: "通过整合基于特征的建模和网络分析，我旨在揭示营养级相互作用中的隐藏模式，并预测这些网络如何响应气候变化和栖息地破碎化等环境变化。"
             }
         };
         
@@ -575,6 +155,7 @@
                 }
             });
         }
+
 
         // 语言切换功能
         document.querySelectorAll('.lang-btn').forEach(button => {
@@ -593,18 +174,10 @@
             });
         });
 
-        // 移动端菜单切换
-        document.querySelector('.mobile-toggle').addEventListener('click', function() {
-            const navButtons = document.querySelector('.nav-buttons');
-            navButtons.classList.toggle('active');
-        });
-
         // 页面加载完成后初始化
         document.addEventListener('DOMContentLoaded', function() {
-            // 初始设置英文为默认语言
             updateLanguageElements();
         });
     </script>
 </body>
-
 </html>

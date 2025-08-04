@@ -1,0 +1,277 @@
+/* ==================================================
+   自定义变量定义
+   ================================================== */
+:root {
+    --primary-color: #1F2041;
+    --secondary-color: #4B644A;
+    --accent-color: #89A58A;
+    --light-color: #f8f9fa;
+    --text-color: #333;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* ==================================================
+   基础重置与全局样式
+   ================================================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-color);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ==================================================
+   头部区域样式
+   ================================================== */
+header {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+/* ==================================================
+   语言切换器样式
+   ================================================== */
+.lang-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lang-btn:hover {
+    background: white;
+}
+
+.lang-btn.active {
+    background: white;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* ==================================================
+   导航栏样式（使用Bootstrap基础）
+   ================================================== */
+.navbar {
+    background-color: var(--accent-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-radius: var(--border-radius);
+}
+
+.navbar .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    min-width: 80px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.navbar .nav-link i {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    transition: var(--transition);
+}
+
+.navbar .nav-link span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+/* 按钮悬停效果 */
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--primary-color);
+    transition: height 0.3s ease;
+    z-index: -1;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.nav-btn:hover::before {
+    height: 100%;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    color:white !important; 
+}
+
+.nav-btn:hover i,
+.nav-btn.active i {
+    transform: translateY(-3px);
+}
+
+.nav-btn:hover span,
+.nav-btn.active span {
+    transform: translateY(3px);
+}
+
+/* 活动状态指示器 */
+.nav-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+/* ==================================================
+   关于我部分样式
+   ================================================== */
+.about-section {
+    background: #EFDDD0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #4B3F72;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ==================================================
+   联系链接样式
+   ================================================== */
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background: rgba(137, 165, 138, 0.2);
+    border-radius: var(--border-radius);
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-link:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* ==================================================
+   更新部分样式
+   ================================================== */
+.updates-section {
+    background: #DDD0BD;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.update-date {
+    color: var(--primary-color);
+}
+
+/* ==================================================
+   页脚样式
+   ================================================== */
+footer {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+    background: rgba(237, 218, 203, 0.2);
+    border-radius: var(--border-radius);
+}
+
+/* ==================================================
+   响应式设计
+   ================================================== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    /* 移动端导航按钮样式 */
+    .nav-btn {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 15px 20px;
+        text-align: left;
+    }
+    
+    .nav-btn i {
+        margin-bottom: 0;
+        margin-right: 15px;
+    }
+    
+    .nav-btn.active::after {
+        display: none;
+    }
+}

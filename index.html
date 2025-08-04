@@ -1,447 +1,117 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jingyi Li | Home</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 图标 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* 基础重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #1F2041;
-            --secondary-color: #4B644A;
-            --accent-color: #89A58A;
-            --light-color: #f8f9fa;
-            --text-color: #333;
-            --border-radius: 8px;
-            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-color);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            background: var(--primary-color);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            margin-bottom: 2rem;
-            border-radius: var(--border-radius);
-            position: relative;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            opacity: 0.8;
-        }
-
-        h2 {
-            color: var(--primary-color);
-            margin: 1.5rem 0 1rem;
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 0.5rem;
-        }
-
-        /* 语言切换 */
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .lang-btn.active {
-            background: white;
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-
-        /* 导航栏样式 */
-        .navbar {
-            background-color: var(--accent-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-radius: var(--border-radius);
-            margin-bottom: 1.5rem;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        /* 横排按钮组样式 */
-        .nav-buttons {
-            display: flex;
-            gap: 5px;
-        }
-
-        .nav-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 15px;
-            background-color: transparent;
-            color: white;
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            min-width: 80px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .nav-btn i {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            transition: var(--transition);
-        }
-
-        .nav-btn span {
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        /* 按钮悬停效果 */
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background-color: var(--primary-color);
-            transition: height 0.3s ease;
-            z-index: -1;
-            border-radius: 0 0 var(--border-radius) var(--border-radius);
-        }
-
-        .nav-btn:hover::before {
-            height: 100%;
-        }
-
-        .nav-btn:hover,
-        .nav-btn.active {
-            color: white;
-        }
-
-        .nav-btn:hover i,
-        .nav-btn.active i {
-            transform: translateY(-3px);
-        }
-
-        .nav-btn:hover span,
-        .nav-btn.active span {
-            transform: translateY(3px);
-        }
-
-        /* 活动状态指示器 */
-        .nav-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 3px;
-            background-color: white;
-            border-radius: 2px;
-        }
-
-        /* 移动端切换按钮 */
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
-            padding: 10px;
-        }
-
-        /* 主要内容布局 */
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .main-content {
-                grid-template-columns: 2fr 1fr;
-            }
-        }
-
-        /* 关于我部分 */
-        .about-section {
-            background: #EFDDD0;
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-        }
-
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            overflow: hidden;
-            border: 4px solid #4B3F72;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .profile-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 15px;
-            background: rgba(137, 165, 138, 0.2);
-            border-radius: var(--border-radius);
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .contact-link:hover {
-            background: var(--accent-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* 更新部分 */
-        .updates-section {
-            background: #DDD0BD;
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-        }
-
-        .update-list {
-            list-style: none;
-        }
-
-        .update-item {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .update-date {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .update-content {
-            font-size: 0.95rem;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 1.5rem;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid #eee;
-            background: rgba(237, 218, 203, 0.2);
-            border-radius: var(--border-radius);
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .nav-buttons {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: var(--accent-color);
-                flex-direction: column;
-                gap: 0;
-                box-shadow: var(--box-shadow);
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.4s ease;
-                border-radius: 0 0 var(--border-radius) var(--border-radius);
-            }
-
-            .nav-buttons.active {
-                max-height: 400px;
-            }
-
-            .nav-btn {
-                width: 100%;
-                border-radius: 0;
-                padding: 15px 20px;
-                text-align: left;
-                flex-direction: row;
-                justify-content: flex-start;
-            }
-
-            .nav-btn i {
-                margin-bottom: 0;
-                margin-right: 15px;
-                font-size: 1.2rem;
-            }
-
-            .nav-btn.active::after {
-                display: none;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .subtitle {
-                font-size: 0.9rem;
-            }
-
-            .nav-btn span {
-                font-size: 0.8rem;
-            }
-        }
-    </style>
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="css/style-index.css">
 </head>
 
 <body>
-    <header>
-        <div class="language-switcher">
+    <!-- 头部区域 -->
+    <header class="text-center py-4 mb-4">
+        <div class="language-switcher position-absolute top-0 end-0 mt-3 me-3">
             <button class="lang-btn active" data-lang="en">EN</button>
             <button class="lang-btn" data-lang="zh">中文</button>
         </div>
         <h1 class="i18n" data-i18n="name">Jingyi Li</h1>
-        <p class="subtitle i18n" data-i18n="title">Doctoral Researcher at German Centre for Integrative Biodiversity
-            Research (iDiv) Halle-Jena-Leipzig</p>
+        <p class="subtitle i18n" data-i18n="title">Doctoral Researcher at German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig</p>
     </header>
 
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="mobile-toggle">
+    <!-- 导航栏 - 使用Bootstrap导航组件 -->
+    <nav class="navbar navbar-expand-md sticky-top mb-4">
+        <div class="container-fluid">
+            <!-- 移动端切换按钮 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fas fa-bars"></i>
-            </div>
-
-            <div class="nav-buttons">
-                <a href="index.html" class="nav-btn active">
-                    <i class="fas fa-home"></i>
-                    <span class="i18n" data-i18n="home">Home</span>
-                </a>
-                <a href="CV.html" class="nav-btn">
-                    <i class="fas fa-file-alt"></i>
-                    <span class="i18n" data-i18n="cv">CV</span>
-                </a>
-                <a href="research.html" class="nav-btn">
-                    <i class="fas fa-computer"></i>
-                    <span class="i18n" data-i18n="research">Research</span>
-                </a>
-                <a href="publications.html" class="nav-btn">
-                    <i class="fas fa-book"></i>
-                    <span class="i18n" data-i18n="publications">Publications</span>
-                </a>
+            </button>
+            
+            <!-- 导航链接 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav w-100 justify-content-start">
+                    <a href="index.html" class="nav-btn nav-link active">
+                        <i class="fas fa-home me-2"></i>
+                        <span class="i18n" data-i18n="home">Home</span>
+                    </a>
+                    <a href="CV.html" class="nav-btn nav-link">
+                        <i class="fas fa-file-alt me-2"></i>
+                        <span class="i18n" data-i18n="cv">CV</span>
+                    </a>
+                    <a href="research.html" class="nav-btn nav-link">
+                        <i class="fas fa-computer me-2"></i>
+                        <span class="i18n" data-i18n="research">Research</span>
+                    </a>
+                    <a href="publications.html" class="nav-btn nav-link">
+                        <i class="fas fa-book me-2"></i>
+                        <span class="i18n" data-i18n="publications">Publications</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="main-content">
-        <!-- 关于我的部分 -->
-        <section class="about-section">
-            <h2 class="i18n" data-i18n="about">About Me</h2>
-
-            <div class="profile-img">
-                <img src="images/ljy-profile.jpg" alt="Jingyi Li Profile Photo">
+    <!-- 主要内容区域 - 使用Bootstrap网格系统 -->
+    <div class="container">
+        <div class="row g-4">
+            <!-- 关于我部分 -->
+            <div class="col-lg-8">
+                <section class="about-section p-4">
+                    <h2 class="i18n mb-4" data-i18n="about">About Me</h2>
+                    
+                    <div class="profile-img mx-auto mb-4">
+                        <img src="images/ljy-profile.jpg" alt="Jingyi Li Profile Photo" class="img-fluid">
+                    </div>
+                    
+                    <div class="i18n mb-4" data-i18n="bio">
+                        <p>I am a theoretical ecologist, interested in understanding the mechanism underlying species interactions.</p>
+                    </div>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:lijingyi1015@gmail.com" class="contact-link d-flex align-items-center mb-3">
+                            <i class="fas fa-envelope me-3"></i>
+                            <span>lijingyi1015@gmail.com</span>
+                        </a>
+                        
+                        <a href="https://scholar.google.com/citations?user=ubJVJ1EAAAAJ" target="_blank" class="contact-link d-flex align-items-center">
+                            <i class="fab fa-google me-3"></i>
+                            <span>Google Scholar Profile</span>
+                        </a>
+                    </div>
+                </section>
             </div>
-
-            <div class="i18n" data-i18n="bio">
-                <p> I am an ecologist</p>
+            
+            <!-- 新闻部分 -->
+            <div class="col-lg-4">
+                <section class="updates-section p-4">
+                    <h2 class="i18n mb-4" data-i18n="updates">Updates</h2>
+                    <ul class="update-list list-unstyled">
+                        <li class="update-item py-3 border-bottom">
+                            <div class="update-date fw-bold">2025 - 06 - 19</div>
+                            <div class="update-content i18n mt-2" data-i18n="update1">PhD thesis submitted!</div>
+                        </li>
+                    </ul>
+                </section>
             </div>
-
-            <div class="contact-links">
-                <a href="mailto:lijingyi1015@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i>
-                    <span>lijingyi1015@gmail.com</span>
-                </a>
-
-                <a href="https://scholar.google.com/citations?user=ubJVJ1EAAAAJ" target="_blank" class="contact-link">
-                    <i class="fab fa-google"></i>
-                    <span>Google Scholar Profile</span>
-                </a>
-            </div>
-        </section>
-
-        <!-- 新闻的部分 -->
-        <section class="updates-section">
-            <h2 class="i18n" data-i18n="updates">Updates</h2>
-            <ul class="update-list">
-                <li class="update-item">
-                    <div class="update-date">2025 - 06 - 19</div>
-                    <div class="update-content i18n" data-i18n="update1">PhD thesis submitted!</div>
-                </li>
-            </ul>
-        </section>
+        </div>
     </div>
 
-    <footer>
-        <p class="i18n" data-i18n="footer">Jingyi Li | Ecology | <a
-                href="mailto:lijingyi1015@gmail.com">lijingyi1015@gmail.com</a></p>
+    <!-- 页脚 -->
+    <footer class="text-center py-4 mt-5">
+        <p class="i18n m-0" data-i18n="footer">Jingyi Li | Ecology | <a href="mailto:lijingyi1015@gmail.com">lijingyi1015@gmail.com</a></p>
     </footer>
 
+    <!-- Bootstrap JS 和 Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 自定义脚本 -->
     <script>
         // 多语言支持
         const translations = {
@@ -454,10 +124,9 @@
                 publications: "Publications",
                 about: "About Me",
                 updates: "Updates",
-                bio: `
-                    <p>I am a PhD candidate in Ecology at [University Name]. My research focuses on [Your Research Area]. With a passion for understanding [Specific Interest], I utilize [Methods/Tools] to explore [Research Questions].</p>
-                `,
-
+                bio: `I am a theoretical ecologist, interested in understanding the mechanism underlying species interactions.`,
+                footer: "Jingyi Li | Ecology | <a href='mailto:lijingyi1015@gmail.com'>lijingyi1015@gmail.com</a>",
+                update1: "PhD thesis submitted!"
             },
             zh: {
                 name: "李菁祎",
@@ -468,50 +137,37 @@
                 publications: "出版物",
                 about: "关于我",
                 updates: "最新动态",
-                bio: `
-                    <p>我是[大学名称]生态学博士候选人。我的研究专注于[您的研究领域]。怀着对[特定兴趣]的理解热情，我利用[方法/工具]探索[研究问题]。</p>
-                `,
-
+                bio: `我是一名理论生态学家，对了解物种相互作用的内在机制很感兴趣`,
+                footer: "李菁祎 | 生态学 | <a href='mailto:lijingyi1015@gmail.com'>lijingyi1015@gmail.com</a>",
+                update1: "博士论文已提交！"
             }
         };
 
         // 语言切换功能
         document.querySelectorAll('.lang-btn').forEach(button => {
-            button.addEventListener('click', function () {
+            button.addEventListener('click', function() {
                 const lang = this.getAttribute('data-lang');
-
+                
                 // 更新按钮状态
                 document.querySelectorAll('.lang-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 this.classList.add('active');
-
+                
                 // 更新页面内容
                 document.querySelectorAll('.i18n').forEach(element => {
                     const key = element.getAttribute('data-i18n');
                     if (translations[lang][key]) {
-                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                            element.value = translations[lang][key];
-                        } else if (element.tagName === 'A' && element.hasAttribute('href')) {
-                            // 特殊处理链接文本
-                            element.innerHTML = translations[lang][key];
-                        } else {
-                            element.innerHTML = translations[lang][key];
-                        }
+                        element.innerHTML = translations[lang][key];
                     }
                 });
             });
         });
-
-        // 移动端菜单切换
-        document.querySelector('.mobile-toggle').addEventListener('click', function () {
-            const navButtons = document.querySelector('.nav-buttons');
-            navButtons.classList.toggle('active');
-        });
-
+        
         // 初始设置英文为默认语言
-        document.dispatchEvent(new Event('DOMContentLoaded'));
+        document.addEventListener('DOMContentLoaded', function() {
+            // 可以在这里设置初始语言
+        });
     </script>
 </body>
-
 </html>

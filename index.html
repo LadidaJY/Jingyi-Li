@@ -71,7 +71,11 @@
                     </div>
                     
                     <div class="i18n mb-4" data-i18n="bio">
-                        <p>I am a theoretical ecologist, interested in understanding the mechanism underlying species interactions.</p>
+                        <p>Hey, I am a doctoral researcher at the German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig.
+                            My research focuses on investigating the mechanisms shaping complex species interactions.
+                            I investigate trophic interactions through multiple lenses: environmental drivers (e.g., temperature), predator-prey body-size ratios, and information flow among species, 
+                            aiming to advance our understanding of species interacitons' formation, dynamics, and strength.
+                            I enjoy hiking (since living in Germany), detective novels (being a fan of Agatha and Anthony), and exploring tea (a passion rooted in my undergraduate studies).</p>
                     </div>
                     
                     <div class="contact-links">
@@ -124,8 +128,11 @@
                 publications: "Publications",
                 about: "About Me",
                 updates: "Updates",
-                bio: `I am a theoretical ecologist, interested in understanding the mechanism underlying species interactions.`,
-                footer: "Jingyi Li | Ecology | <a href='mailto:lijingyi1015@gmail.com'>lijingyi1015@gmail.com</a>",
+                bio: `Hey, I am a doctoral researcher at the German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig.
+                            My research focuses on investigating the mechanisms shaping complex species interactions.
+                            I investigate trophic interactions through multiple lenses: environmental drivers (e.g., temperature), predator-prey body-size ratios, and information flow among species, 
+                            aiming to advance our understanding of species interacitons' formation, dynamics, and strength.
+                            I enjoy hiking (since living in Germany), detective novels (being a fan of Agatha and Anthony), and exploring tea (a passion rooted in my undergraduate studies).`,
                 update1: "PhD thesis submitted!"
             },
             zh: {
@@ -137,8 +144,9 @@
                 publications: "出版物",
                 about: "关于我",
                 updates: "最新动态",
-                bio: `我是一名理论生态学家，对了解物种相互作用的内在机制很感兴趣`,
-                footer: "李菁祎 | 生态学 | <a href='mailto:lijingyi1015@gmail.com'>lijingyi1015@gmail.com</a>",
+                bio: `我是德国综合生物多样性研究中心（iDiv）的博士生研究员。
+                我的研究致力于探索复杂物种相互作用的形成机制。我的研究从多个方面入手：环境驱动因素（如温度）、捕食者-猎物体型比、物种间信息流等，
+                以期深化对物种相互作用的形成、动态与强度的理解。我喜欢徒步，看侦探小说（阿加莎与安东尼的忠实读者），热爱关于茶的一切`,
                 update1: "博士论文已提交！"
             }
         };
@@ -158,15 +166,20 @@
                 document.querySelectorAll('.i18n').forEach(element => {
                     const key = element.getAttribute('data-i18n');
                     if (translations[lang][key]) {
-                        element.innerHTML = translations[lang][key];
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.value = translations[lang][key];
+                        } else {
+                            element.innerHTML = translations[lang][key];
+                        }
                     }
                 });
             });
         });
-        
+
         // 初始设置英文为默认语言
         document.addEventListener('DOMContentLoaded', function() {
-            // 可以在这里设置初始语言
+            // 设置英文为默认语言
+            document.querySelector('.lang-btn[data-lang="en"]').classList.add('active');
         });
     </script>
 </body>
